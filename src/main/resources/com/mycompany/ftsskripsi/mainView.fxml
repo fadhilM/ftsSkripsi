@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane id="borderpane" fx:id="outerBorderpane" prefHeight="580.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.ftsskripsi.MainViewController">
+    <center>
+        <BorderPane fx:id="innerBorderpane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <center>
+                <AnchorPane id="AnchorPane" fx:id="thisPane" prefHeight="514.0" prefWidth="800.0">
+                    <stylesheets>
+                        <URL value="@styles.css" />
+                    </stylesheets>
+                    <children>
+                        <Pane layoutX="24.0" layoutY="45.0" prefHeight="40.0" prefWidth="478.0" stylesheets="@../../../../../../../skripsiFts/src/main/resources/com/mycompany/skripsifts/style.css">
+                            <styleClass>
+                                <String fx:value="color-primary" />
+                                <String fx:value="border-radius-3" />
+                            </styleClass>
+                            <children>
+                                <Pane layoutX="4.0" layoutY="4.0" prefHeight="32.0" prefWidth="467.0">
+                                    <styleClass>
+                                        <String fx:value="color-white" />
+                                        <String fx:value="border-radius-3" />
+                                    </styleClass>
+                                    <children>
+                                        <JFXTextField fx:id="excelPathTree" focusColor="#3a4558" layoutX="17.0" layoutY="2.0" prefHeight="25.0" prefWidth="446.0" unFocusColor="#b8b1b1" />
+                                    </children>
+                                </Pane>
+                            </children>
+                        </Pane>
+                        <LineChart fx:id="dataChart" animated="false" createSymbols="false" layoutX="27.0" layoutY="95.0" prefHeight="213.0" prefWidth="766.0">
+                            <xAxis>
+                                <CategoryAxis side="BOTTOM" fx:id="xAxis" />
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis fx:id="yAxis" side="LEFT" />
+                            </yAxis>
+                        </LineChart>
+                        <Pane layoutX="32.0" layoutY="310.0" prefHeight="190.0" prefWidth="766.0">
+                            <children>
+                                <Pane layoutY="4.0" prefHeight="40.0" prefWidth="205.0" styleClass="color-primary" stylesheets="@../../../../../../../skripsiFts/src/main/resources/com/mycompany/skripsifts/style.css">
+                                    <children>
+                                        <Label layoutX="34.0" layoutY="11.0" stylesheets="@../../../../../../../skripsiFts/src/main/resources/com/mycompany/skripsifts/style.css" text="Informasi Tentang Dataset">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <styleClass>
+                                                <String fx:value="txt-color-white" />
+                                                <String fx:value="font-size-13" />
+                                            </styleClass>
+                                        </Label>
+                                        <FontAwesomeIcon fill="#fff6f6" iconName="BOOK" layoutX="14.0" layoutY="26.0" size="1.2em" text="" />
+                                    </children>
+                                </Pane>
+                                <FontAwesomeIcon fill="WHITE" iconName="PLUS" layoutX="-460.0" layoutY="29.0" size="1.2em" styleClass="color-white" text="" />
+                                <TableView fx:id="sheetDataTable" layoutX="227.0" layoutY="3.0" prefHeight="184.0" prefWidth="312.0" stylesheets="@../../../../../../../skripsiFts/src/main/resources/com/mycompany/skripsifts/style.css">
+                                    <columns>
+                                        <TableColumn fx:id="timeColumn" editable="false" prefWidth="121.60000610351562" text="Waktu" />
+                                        <TableColumn fx:id="dataColumn" editable="false" prefWidth="186.39996337890625" text="Data" />
+                                    </columns>
+                                </TableView>
+                                <GridPane layoutX="8.0" layoutY="54.0" prefHeight="139.0" prefWidth="205.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="141.39996337890625" minWidth="10.0" prefWidth="133.39996337890625" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="71.20001220703125" minWidth="9.60003662109375" prefWidth="17.60003662109375" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <Label text="Jumlah Data" />
+                                        <Label text="Data Terkecil" GridPane.rowIndex="1" />
+                                        <Label text="Data Terbesar" GridPane.rowIndex="2" />
+                                        <Label text="Perubahan Terkecil" GridPane.rowIndex="3" />
+                                        <Label text="Perubahan Terbesar" GridPane.rowIndex="4" />
+                                        <Label text=":" GridPane.columnIndex="1" />
+                                        <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                        <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                        <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                        <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                        <Label fx:id="totalDataDisplay" text=". . ." GridPane.columnIndex="2" />
+                                        <Label fx:id="minDataDisplay" text=". . ." GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                        <Label fx:id="maxDataDisplay" text=". . ." GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                        <Label fx:id="minPercentChangeDisplay" text=". . ." GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                        <Label fx:id="maxPercentChangeDisplay" text=". . . " GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                                    </children>
+                                </GridPane>
+                                <Label layoutX="574.0" layoutY="71.0" text="D1" />
+                                <Label layoutX="574.0" layoutY="103.0" text="D2" />
+                                <JFXTextField fx:id="d1Textfield" focusColor="#3a4558" layoutX="615.0" layoutY="67.0" prefHeight="25.0" prefWidth="115.0" unFocusColor="#b8b1b1" />
+                                <JFXTextField fx:id="d2Textfield" focusColor="#3a4558" layoutX="615.0" layoutY="99.0" prefHeight="25.0" prefWidth="115.0" unFocusColor="#b8b1b1" />
+                                <Pane layoutX="564.0" layoutY="4.0" prefHeight="40.0" prefWidth="188.0" styleClass="color-primary" stylesheets="@../../../../../../../skripsiFts/src/main/resources/com/mycompany/skripsifts/style.css">
+                                    <children>
+                                        <Label layoutX="34.0" layoutY="11.0" stylesheets="@../../../../../../../skripsiFts/src/main/resources/com/mycompany/skripsifts/style.css" text="Hitung Model Permalan">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                            <styleClass>
+                                                <String fx:value="txt-color-white" />
+                                                <String fx:value="font-size-13" />
+                                            </styleClass>
+                                        </Label>
+                                        <FontAwesomeIcon fill="WHITE" iconName="PENCIL" layoutX="14.0" layoutY="24.0" size="1.2em" />
+                                    </children>
+                                </Pane>
+                                <JFXButton layoutX="583.0" layoutY="147.0" onAction="#openProsesPeramalan" prefHeight="40.0" prefWidth="151.0" stylesheets="@../../../../../../../skripsiFts/src/main/resources/com/mycompany/skripsifts/style.css" text="Proses Peramalan">
+                                    <styleClass>
+                                        <String fx:value="border-radius-3" />
+                                        <String fx:value="btn-blue" />
+                                        <String fx:value="color-accent-primary" />
+                                        <String fx:value="font-size-13" />
+                                        <String fx:value="txt-color-white" />
+                                    </styleClass>
+                                    <graphic>
+                                        <FontAwesomeIcon fill="WHITE" iconName="CALCULATOR" size="1.2em" />
+                                    </graphic>
+                                </JFXButton>
+                            </children>
+                        </Pane>
+                        <Line endX="654.3999633789062" endY="-5.7220458984375E-6" layoutX="125.0" startX="-105.59999084472656" startY="-5.7220458984375E-6" stroke="#3a4558" strokeWidth="2.0" />
+                        <JFXButton fx:id="importedData" layoutX="514.0" layoutY="45.0" onAction="#importData" prefHeight="40.0" prefWidth="106.0" stylesheets="@../../../../../../../skripsiFts/src/main/resources/com/mycompany/skripsifts/style.css" text="Import Data">
+                            <styleClass>
+                                <String fx:value="border-radius-3" />
+                                <String fx:value="btn-blue" />
+                                <String fx:value="color-accent-primary" />
+                                <String fx:value="font-size-13" />
+                                <String fx:value="txt-color-white" />
+                            </styleClass>
+                            <graphic>
+                                <FontAwesomeIcon fill="WHITE" iconName="PLUS" size="1.2em" styleClass="color-white" text="" />
+                            </graphic>
+                        </JFXButton>
+                        <JFXButton layoutX="636.0" layoutY="45.0" onAction="#exportExcel" prefHeight="40.0" prefWidth="151.0" stylesheets="@../../../../../../../skripsiFts/src/main/resources/com/mycompany/skripsifts/style.css" text="Download Template">
+                            <styleClass>
+                                <String fx:value="border-radius-3" />
+                                <String fx:value="btn-blue" />
+                                <String fx:value="color-accent-primary" />
+                                <String fx:value="font-size-13" />
+                                <String fx:value="txt-color-white" />
+                            </styleClass>
+                            <graphic>
+                                <FontAwesomeIcon fill="WHITE" iconName="PLUS" size="1.2em" styleClass="color-white" text="" />
+                            </graphic>
+                        </JFXButton>
+                    </children>
+                </AnchorPane>
+            </center>
+            <top>
+                <!--                <fx:include source="header.fxml" />-->
+            </top>
+            <top>
+                <HBox prefHeight="66.0" prefWidth="800.0" BorderPane.alignment="CENTER_LEFT">
+                    <children>
+                        <FontAwesomeIcon fill="#3a4558" iconName="TH" size="3.2em">
+                            <HBox.margin>
+                                <Insets left="20.0" right="10.0" />
+                            </HBox.margin>
+                        </FontAwesomeIcon>
+                        <FontAwesomeIcon fill="#c7ceda" iconName="ARROW_RIGHT" size="2em">
+                            <HBox.margin>
+                                <Insets right="10.0" top="5.0" />
+                            </HBox.margin>
+                        </FontAwesomeIcon>
+                       <Label text="Input Data" textFill="#3a4558">
+                            <font>
+                                <Font name="Arial Black" size="20.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets top="5.0" />
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                    <BorderPane.margin>
+                        <Insets />
+                    </BorderPane.margin>
+                    <padding>
+                        <Insets top="15.0" />
+                    </padding>
+                </HBox>
+            </top>
+        </BorderPane>
+    </center>
+    <left>
+        <VBox id="sidebar" fx:id="sidebar" prefHeight="580.0" prefWidth="200.0" styleClass="sidebar" stylesheets="@styles.css">
+   <children>
+      <Pane prefHeight="66.0" prefWidth="200.0" styleClass="color-primary" stylesheets="@styles.css">
+         <children>
+            <Label layoutX="40.0" layoutY="20.0" styleClass="sidebar-btn-label" stylesheets="@styles.css" text="Halaman Utama">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane prefHeight="28.0" prefWidth="200.0" style="-fx-background-color: #333d4e;" stylesheets="@style.css">
+         <children>
+            <Label layoutX="14.0" layoutY="6.0" prefHeight="17.0" prefWidth="42.0" styleClass="sidebar-btn-label" stylesheets="@style.css" text="Menu" textFill="#b8b1b1">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <HBox alignment="CENTER_LEFT" prefHeight="41.0" prefWidth="200.0" styleClass="sidebar-btn" stylesheets="@style.css">
+         <children>
+            <FontAwesomeIcon fill="#b8b1b1" iconName="EDIT" size="2.5em" styleClass="sidebar-btn-icon">
+               <HBox.margin>
+                  <Insets left="10.0" right="5.0" />
+               </HBox.margin>
+            </FontAwesomeIcon>
+            <Label styleClass="sidebar-btn-label" stylesheets="@style.css" text="Input Data">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" onMouseClicked="#goProsesPeramalan" prefHeight="41.0" prefWidth="200.0" styleClass="sidebar-btn" stylesheets="@style.css">
+         <children>
+            <FontAwesomeIcon fill="#b8b1b1" iconName="TASKS" size="1.8em" styleClass="sidebar-btn-icon">
+               <HBox.margin>
+                  <Insets left="10.0" right="5.0" />
+               </HBox.margin>
+            </FontAwesomeIcon>
+            <Label styleClass="sidebar-btn-label" stylesheets="@style.css" text="Tahap Perhitungan" />
+         </children>
+      </HBox>
+            <HBox alignment="CENTER_LEFT" onMouseClicked="#goHalamanMape" prefHeight="41.0" prefWidth="200.0" styleClass="sidebar-btn" stylesheets="@style.css">
+               <children>
+                  <FontAwesomeIcon fill="#b8b1b1" iconName="CALCULATOR" size="1.8em">
+                     <HBox.margin>
+                        <Insets left="10.0" right="5.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Label styleClass="sidebar-btn-label" stylesheets="@style.css" text="Hitung Akurasi" />
+               </children>
+            </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="104.0" onMouseClicked="#goHalamanPeramalan" prefHeight="41.0" prefWidth="200.0" styleClass="sidebar-btn" stylesheets="@style.css">
+         <children>
+            <FontAwesomeIcon fill="#b8b1b1" iconName="CALENDAR" size="1.8em" styleClass="sidebar-btn-icon">
+               <HBox.margin>
+                  <Insets left="10.0" right="5.0" />
+               </HBox.margin>
+            </FontAwesomeIcon>
+            <Label styleClass="sidebar-btn-label" stylesheets="@style.css" text="Prediksi Harga" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
+    </left>
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+</BorderPane>
