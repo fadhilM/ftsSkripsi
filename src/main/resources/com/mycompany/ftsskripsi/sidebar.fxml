@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox id="sidebar" fx:id="sidebar" prefHeight="580.0" prefWidth="200.0" styleClass="sidebar" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="66.0" prefWidth="200.0" styleClass="color-primary" stylesheets="@styles.css">
+         <children>
+            <Label layoutX="40.0" layoutY="20.0" styleClass="sidebar-btn-label" stylesheets="@styles.css" text="Halaman Utama">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane prefHeight="28.0" prefWidth="200.0" style="-fx-background-color: #333d4e;" stylesheets="@style.css">
+         <children>
+            <Label layoutX="14.0" layoutY="6.0" prefHeight="17.0" prefWidth="42.0" styleClass="sidebar-btn-label" stylesheets="@style.css" text="Menu" textFill="#b8b1b1">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <HBox alignment="CENTER_LEFT" prefHeight="41.0" prefWidth="200.0" styleClass="sidebar-btn" stylesheets="@style.css">
+         <children>
+            <FontAwesomeIcon fill="#b8b1b1" iconName="EDIT" size="1.8em" styleClass="sidebar-btn-icon">
+               <HBox.margin>
+                  <Insets left="10.0" right="5.0" />
+               </HBox.margin>
+            </FontAwesomeIcon>
+            <Label styleClass="sidebar-btn-label" stylesheets="@style.css" text="Input Data" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="41.0" prefWidth="200.0" styleClass="sidebar-btn" stylesheets="@style.css">
+         <children>
+            <FontAwesomeIcon fill="#b8b1b1" iconName="TASKS" size="1.8em" styleClass="sidebar-btn-icon">
+               <HBox.margin>
+                  <Insets left="10.0" right="5.0" />
+               </HBox.margin>
+            </FontAwesomeIcon>
+            <Label styleClass="sidebar-btn-label" stylesheets="@style.css" text="Tahap Perhitungan" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="104.0" prefHeight="41.0" prefWidth="200.0" styleClass="sidebar-btn" stylesheets="@style.css">
+         <children>
+            <FontAwesomeIcon fill="#b8b1b1" iconName="CALENDAR" size="1.8em" styleClass="sidebar-btn-icon">
+               <HBox.margin>
+                  <Insets left="10.0" right="5.0" />
+               </HBox.margin>
+            </FontAwesomeIcon>
+            <Label styleClass="sidebar-btn-label" stylesheets="@style.css" text="Tahap Peramalan" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

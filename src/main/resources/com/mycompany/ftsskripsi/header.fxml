@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="66.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.ftsskripsi.HeaderController">
+    <stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
+   <children>
+      <FontAwesomeIcon fill="#3a4558" iconName="TH" size="3.2em">
+         <HBox.margin>
+            <Insets left="20.0" right="10.0" />
+         </HBox.margin>
+      </FontAwesomeIcon>
+      <FontAwesomeIcon fill="#c7ceda" iconName="ARROW_RIGHT" size="2em">
+         <HBox.margin>
+            <Insets right="10.0" />
+         </HBox.margin>
+      </FontAwesomeIcon>
+      <Label fx:id="header" text="Halaman Sekarang" textFill="#3a4558">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+   </children>
+</HBox>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane id="borderpane" fx:id="outerBorderpane" prefHeight="580.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.ftsskripsi.HalamanMapeController">
+    <center>
+        <BorderPane fx:id="innerBorderpane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <top>
+                <HBox prefHeight="66.0" prefWidth="800.0" BorderPane.alignment="CENTER_LEFT">
+                    <children>
+                        <FontAwesomeIcon fill="#3a4558" iconName="TH" size="3.2em">
+                            <HBox.margin>
+                                <Insets left="20.0" right="10.0" />
+                            </HBox.margin>
+                        </FontAwesomeIcon>
+                        <FontAwesomeIcon fill="#c7ceda" iconName="ARROW_RIGHT" size="2em">
+                            <HBox.margin>
+                                <Insets right="10.0" top="5.0" />
+                            </HBox.margin>
+                        </FontAwesomeIcon>
+                        <Label text="Cek Akurasi" textFill="#3a4558">
+                            <font>
+                                <Font name="Arial Black" size="20.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets top="5.0" />
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                    <BorderPane.margin>
+                        <Insets />
+                    </BorderPane.margin>
+                    <padding>
+                        <Insets top="15.0" />
+                    </padding>
+                </HBox>
+            </top>
+         <left>
+                <AnchorPane id="AnchorPane" fx:id="thisPane" prefHeight="514.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+                    <stylesheets>
+                        <URL value="@styles.css" />
+                    </stylesheets>
+                    <children>
+                        <Pane layoutX="243.0" layoutY="7.0" prefHeight="40.0" prefWidth="393.0" stylesheets="@../../../../../../../skripsiFts/src/main/resources/com/mycompany/skripsifts/style.css">
+                            <styleClass>
+                                <String fx:value="color-primary" />
+                                <String fx:value="border-radius-3" />
+                            </styleClass>
+                            <children>
+                                <Pane layoutX="4.0" layoutY="4.0" prefHeight="32.0" prefWidth="383.0">
+                                    <styleClass>
+                                        <String fx:value="color-white" />
+                                        <String fx:value="border-radius-3" />
+                                    </styleClass>
+                                    <children>
+                                        <JFXTextField fx:id="lokasiTimeseries" focusColor="#3a4558" layoutX="17.0" layoutY="2.0" prefHeight="25.0" prefWidth="357.0" unFocusColor="#b8b1b1" />
+                                    </children>
+                                </Pane>
+                            </children>
+                        </Pane>
+                        <LineChart fx:id="dataChart" animated="false" createSymbols="false" layoutX="32.0" layoutY="67.0" prefHeight="183.0" prefWidth="766.0">
+                            <xAxis>
+                                <CategoryAxis side="BOTTOM" fx:id="xAxis" />
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis fx:id="yAxis" side="LEFT" />
+                            </yAxis>
+                        </LineChart>
+                        <Pane layoutX="32.0" layoutY="234.0" prefHeight="266.0" prefWidth="766.0">
+                            <children>
+                                <TableView fx:id="tabelDataPrediksi" layoutX="14.0" layoutY="14.0" prefHeight="196.0" prefWidth="741.0" stylesheets="@../../../../../../../skripsiFts/src/main/resources/com/mycompany/skripsifts/style.css">
+                                    <columns>
+                                        <TableColumn fx:id="kolomTanggal" editable="false" prefWidth="166.40003967285156" text="Waktu" />
+                                        <TableColumn fx:id="kolomHargaAsli" prefWidth="196.79998779296875" text="Harga Aktual" />
+                                        <TableColumn fx:id="kolomHargaPrediksi" editable="false" prefWidth="189.5999755859375" text="Harga Prediksi" />
+                                        <TableColumn fx:id="kolomMape" prefWidth="179.2000732421875" text="Persentase Error" />
+                                    </columns>
+                                </TableView>
+                        <Label layoutX="46.0" layoutY="219.0" prefHeight="29.0" prefWidth="113.0" text="Nilai MAPE :">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="mape" layoutX="166.0" layoutY="218.0" prefHeight="25.0" prefWidth="62.0" text="98.1 %">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
+                        <JFXButton layoutX="466.0" layoutY="219.0" onAction="#downloadModel" prefHeight="26.0" prefWidth="138.0" stylesheets="@../../../../../../../skripsiFts/src/main/resources/com/mycompany/skripsifts/style.css" text="Export Model">
+                           <styleClass>
+                              <String fx:value="border-radius-3" />
+                              <String fx:value="btn-blue" />
+                              <String fx:value="color-accent-primary" />
+                              <String fx:value="font-size-13" />
+                              <String fx:value="txt-color-white" />
+                           </styleClass>
+                           <graphic>
+                              <FontAwesomeIcon fill="WHITE" iconName="DOWNLOAD" size="1.2em" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton layoutX="614.0" layoutY="219.0" onAction="#goHalamanPeramalan" prefHeight="26.0" prefWidth="138.0" stylesheets="@../../../../../../../skripsiFts/src/main/resources/com/mycompany/skripsifts/style.css" text="Prediksi Harga ">
+                           <styleClass>
+                              <String fx:value="border-radius-3" />
+                              <String fx:value="btn-blue" />
+                              <String fx:value="color-accent-primary" />
+                              <String fx:value="font-size-13" />
+                              <String fx:value="txt-color-white" />
+                           </styleClass>
+                           <graphic>
+                              <FontAwesomeIcon fill="WHITE" iconName="PLUS" size="1.2em" />
+                           </graphic>
+                        </JFXButton>
+                            </children>
+                        </Pane>
+                        <Line endX="654.3999633789062" endY="-5.7220458984375E-6" layoutX="135.0" startX="-115.80000305175781" startY="1.5258789289873675E-6" stroke="#3a4558" strokeWidth="2.0" />
+                        <JFXButton layoutX="648.0" layoutY="7.0" onAction="#importData" prefHeight="40.0" prefWidth="138.0" stylesheets="@../../../../../../../skripsiFts/src/main/resources/com/mycompany/skripsifts/style.css" text="Import Data">
+                            <styleClass>
+                                <String fx:value="border-radius-3" />
+                                <String fx:value="btn-blue" />
+                                <String fx:value="color-accent-primary" />
+                                <String fx:value="font-size-13" />
+                                <String fx:value="txt-color-white" />
+                            </styleClass>
+                            <graphic>
+                                <FontAwesomeIcon fill="WHITE" iconName="PLUS" size="1.2em" />
+                            </graphic>
+                        </JFXButton>
+                        <Label layoutX="52.0" layoutY="14.0" prefHeight="26.0" prefWidth="225.0" text="Masukkan Data Yang Akan di Tes : " />
+                    </children>
+                </AnchorPane>
+         </left>
+        </BorderPane>
+    </center>
+    <left>
+        <VBox id="sidebar" fx:id="sidebar" prefHeight="580.0" prefWidth="200.0" styleClass="sidebar" stylesheets="@styles.css">
+   <children>
+      <Pane prefHeight="66.0" prefWidth="200.0" styleClass="color-primary" stylesheets="@styles.css">
+         <children>
+            <Label layoutX="40.0" layoutY="20.0" styleClass="sidebar-btn-label" stylesheets="@styles.css" text="Halaman Utama">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane prefHeight="28.0" prefWidth="200.0" style="-fx-background-color: #333d4e;" stylesheets="@style.css">
+         <children>
+            <Label layoutX="14.0" layoutY="6.0" prefHeight="17.0" prefWidth="42.0" styleClass="sidebar-btn-label" stylesheets="@style.css" text="Menu" textFill="#b8b1b1">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <HBox alignment="CENTER_LEFT" onMouseClicked="#goMainView" prefHeight="41.0" prefWidth="200.0" styleClass="sidebar-btn" stylesheets="@style.css">
+         <children>
+            <FontAwesomeIcon fill="#b8b1b1" iconName="EDIT" size="1.8em" styleClass="sidebar-btn-icon">
+               <HBox.margin>
+                  <Insets left="10.0" right="5.0" />
+               </HBox.margin>
+            </FontAwesomeIcon>
+            <Label styleClass="sidebar-btn-label" stylesheets="@style.css" text="Input Data" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" onMouseClicked="#goProsesPeramalan" prefHeight="41.0" prefWidth="200.0" styleClass="sidebar-btn" stylesheets="@style.css">
+         <children>
+            <FontAwesomeIcon fill="#b8b1b1" iconName="TASKS" size="1.8em" styleClass="sidebar-btn-icon">
+               <HBox.margin>
+                  <Insets left="10.0" right="5.0" />
+               </HBox.margin>
+            </FontAwesomeIcon>
+            <Label styleClass="sidebar-btn-label" stylesheets="@style.css" text="Tahap Perhitungan" />
+         </children>
+      </HBox>
+            <HBox alignment="CENTER_LEFT" onMouseClicked="#goProsesPeramalan" prefHeight="41.0" prefWidth="200.0" styleClass="sidebar-btn" stylesheets="@style.css">
+               <children>
+                  <FontAwesomeIcon fill="#b8b1b1" iconName="CALCULATOR" size="2.5em">
+                     <HBox.margin>
+                        <Insets left="10.0" right="5.0" />
+                     </HBox.margin>
+                  </FontAwesomeIcon>
+                  <Label styleClass="sidebar-btn-label" stylesheets="@style.css" text="Hitung Akurasi">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="104.0" onMouseClicked="#goHalamanPeramalan" prefHeight="41.0" prefWidth="200.0" styleClass="sidebar-btn" stylesheets="@style.css">
+         <children>
+            <FontAwesomeIcon fill="#b8b1b1" iconName="CALENDAR" size="1.8em" styleClass="sidebar-btn-icon">
+               <HBox.margin>
+                  <Insets left="10.0" right="5.0" />
+               </HBox.margin>
+            </FontAwesomeIcon>
+            <Label onMouseClicked="#goHalamanPeramalan" styleClass="sidebar-btn-label" stylesheets="@style.css" text="Prediksi Harga" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
+    </left>
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+</BorderPane>
